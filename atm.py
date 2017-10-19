@@ -29,10 +29,12 @@ def withdraw(uid,amount,num):
 				st = uid + '  ' + t + '  Rs.' + str(amount) + '  ATM WDL\n'
 				log.write(st)
 				msg = 'Your account is debited with Rs.'+str(amount)+'\n --Regards,\n IBS Bank.'
-				sendsms.send('9751539433','scientist1',int(num),msg)
+				#Use your login phone number and password of Way2sms
+				#num is the Customer phone number
+				sendsms.send('___________','___________',int(num),msg) 	
 				break
 			else:
-				print('\n\tInsufficient Balance.\n')
+				print '\n\tInsufficient Balance.\n'
 
 def deposit(uid,amount,num):
 	dfile = open('balance.txt','r+')
@@ -59,7 +61,9 @@ def deposit(uid,amount,num):
 			st = uid + '  ' + t + '  Rs.' + str(amount) + '  CASH DEPOSIT\n'
 			log.write(st)
 			msg = 'Your account is credited with Rs.'+str(amount)+'\n --Regards,\n IBS Bank.'
-			sendsms.send('9751539433','scientist1',int(num),msg)
+			#Use your login phone number and password of Way2sms
+			#num is the Customer phone number
+			sendsms.send('___________','___________',int(num),msg)
 			break
 			
 def checkbalance(uid):
@@ -70,7 +74,7 @@ def checkbalance(uid):
 		if uid in i:
 			tempbal = i[4:]
 			sleep(2)
-			print('\nAccount Balance: '+tempbal)
+			print '\nAccount Balance: '+tempbal
 			sleep(1)
 			break
 
@@ -87,25 +91,27 @@ def changepin(uid,num):
 				if new == retype:
 					details.remove(i)
 					details.append(uid+' '+new+'\n')
-					print('PIN Changed.')
+					print 'PIN Changed.'
 					for j in range(len(details)):
 						ans += details[j]
 					upfile.seek(0)
 					upfile.write(ans)
 					msg = "Your IBS ATM pin has been changed. If you don't recognize this activity, Contact Bank."+'\n --Regards,\n IBS Bank.'
-					sendsms.send('9751539433','scientist1',int(num),msg)
+					#Use your login phone number and password of Way2sms
+					#num is the Customer phone number
+					sendsms.send('___________','___________',int(num),msg)
 				else:
-					print('Try Again !\n')
+					print 'Try Again !\n'
 					changepin(uid)
 			else:
-				print('Old PIN Mismatch. Try Next time.')
+				print 'Old PIN Mismatch. Try Next time.'
 			break
 
 def ministmt(uid):
 	mfile = open('transac_log.txt','r')
 	details = []
 	os.system('clear')
-	print(' -- Your last three transactions --\n')
+	print ' -- Your last three transactions --\n'
 	for i in mfile:
 		if uid in i:
 			details.append(i)
@@ -119,14 +125,14 @@ def ministmt(uid):
 
 
 os.system('clear')
-print('\t\t------- IBS ATM -------\n')
+print '\t\t------- IBS ATM -------\n'
 opt = 'y'
 while opt == 'y':
 	
 	uid = raw_input('Enter User ID: ')
 	pas = gp.getpass('Enter PIN: ')
 
-	print('\n')
+	print '\n' 
 	users = open('users.txt','r')
 	userpass = open('userpass.txt','r')
 
@@ -146,18 +152,18 @@ while opt == 'y':
 			uflag = 1
 
 	if uflag == 1:
-		print('\nYour account cannot be used. Contact Bank for details.\n')
+		print '\nYour account cannot be used. Contact Bank for details.\n'
 		sys.exit()
 
 	if flag == 0:
-		print('\nPassword Mismatch. Try Next time.\n')
+		print '\nPassword Mismatch. Try Next time.\n'
 		continue
 
 	os.system('clear')
-	print('\n')
+	print '\n'
 	for i in users:
 		if uid in i:
-			print('\t\t Welcome '+i[4:-11])
+			print '\t\t Welcome '+i[4:-11]
 			num = i[-11:-1]
 			break
 	sleep(2)
@@ -181,4 +187,4 @@ while opt == 'y':
 	os.system('clear')
 
 
-print('\nThank You !\n')
+print '\nThank You !\n'
