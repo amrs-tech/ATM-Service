@@ -5,3 +5,6 @@ ATM service with additional feature of sending SMS notification of transactions 
 * urllib
 * cookielib
 * getpass
+
+### Authentication:
+Face authentication is enabled after entering PIN by the user.
