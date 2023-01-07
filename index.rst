@@ -2,12 +2,13 @@ ATM-Service Console Application
 ===============================
 
 .. code-block:: python
-import getpass as gp
-from datetime import datetime
-import sys
-from time import sleep
-import os
-import sendsms
+
+  import getpass as gp
+  from datetime import datetime
+  import sys
+  from time import sleep
+  import os
+  import sendsms
 
 
 The getpass module is used for secure password input, the datetime module provides classes for manipulating dates and times, 
