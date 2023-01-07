@@ -2,7 +2,6 @@ ATM-Service Console Application
 ===============================
 
 .. code-block:: python
-
 import getpass as gp
 from datetime import datetime
 import sys
